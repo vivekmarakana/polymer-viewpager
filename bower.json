@@ -4,7 +4,7 @@
     "authors": [
         "Vivek Marakana <vivek.marakana@gmail.com>"
     ],
-    "description": "ViewPager component for polymer just like Android ViewPager. Container view-pager and view-fragment tags.",
+    "description": "ViewPager component for polymer just like Android ViewPager that also support swiping. Contains view-pager and view-fragment tags.",
     "keywords": [
         "web-component",
         "web-components",

@@ -1,33 +1,15 @@
-view-pager
+polymer-viewpager
 ============
 
-See the [component page](http://polymerlabs.github.io/seed-element) for more information.
+This library will help you create ViewPager component with polymer just like Android ViewPager that also support swiping.
+
+See the [demo page](http://vivekmarakana.github.io/polymer-viewpager/demo.html) to feel the awesomeness of webcomponents.
 
 ## Getting Started
 
-We've put together a [guide to seed-element](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
+We've put together a [guide to view-pager](http://vivekmarakana.github.io/polymer-viewpager/) to help get you started.
 
-## Testing Your Element
+## Included tags
 
-Add the logic specific to your new element and verify its functionality. Good unit tests are essential to your verification plan but a good way to quickly sanity test your component is to access your demo.html file via a local web server. There are several ways to do this but one easy method is to run a simple web server that ships with Python, using the commands:
+You'll need to use `view-pager` and `view-fragments` to create an Android Like view pager.
 
-```sh
-python -m SimpleHTTPServer
-```
-
-Or other method using NodeJS:
-
-```sh
-http-server ./
-```
-
-This starts a web server on port 8000, so you can test your new element by navigating a browser to `localhost:8000/test/index.html`.
-
-### web-component-tester
-
-The tests are also compatible with [web-component-tester](https://github.com/Polymer/web-component-tester). You can run them on multiple local browsers via:
-
-```sh
-npm install -g web-component-tester
-wct
-```
