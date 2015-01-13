@@ -10,7 +10,8 @@
     "web-components",
     "polymer",
     "view-pager",
-    "sliding-tabs"
+    "tab-layout",
+    "swipe-layout"
   ],
   "main": "view-pager.html",
   "license": "MIT",
@@ -25,8 +26,5 @@
     "core-meta": "Polymer/core-meta#~0.5.2",
     "core-transition": "Polymer/core-transition#~0.5.2",
     "core-resizable": "Polymer/core-resizable#~0.5.2"
-  },
-  "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
   }
 }
