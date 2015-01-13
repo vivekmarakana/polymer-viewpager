@@ -45,16 +45,13 @@ To change selection bar color:
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-resizable/core-resizable.html">
 <link rel="import" href="../paper-tabs/paper-tabs.html">
 <link rel="import" href="view-fragment.html">
 <polymer-element name="view-pager" attributes="swipeDisabled thresholdVelocity tabAttributes selected" fit>
     <template>
         <link rel="stylesheet" href="view-pager.css">
-        <paper-tabs id="viewTabs" selected="{{selected}}" on-core-activate="{{pageChange}}">
-            <template repeat="{{tabs}}">
-                <paper-tab class="uppercase">{{}}</paper-tab>
-            </template>
-        </paper-tabs>
+        <paper-tabs id="viewTabs" selected="{{selected}}" on-core-activate="{{pageChange}}"></paper-tabs>
         <div id="viewPager" fit>
             <content select="view-fragment"></content>
         </div>
@@ -97,17 +94,20 @@ To change selection bar color:
                 this.dragging = false;
                 this.deltaTime = 0;
             },
-            ready: function() {
+            domReady: function(){
                 this.fragments = this.querySelectorAll('view-fragment');
                 for (var i = 0; i < this.fragments.length; i++) {
                     this.tabs.push(this.fragments[i].name);
+                };
+                for (var i = 0; i < this.tabs.length; i++) {
+                    var _tab = document.createElement('paper-tab');
+                    _tab.innerHTML = this.tabs[i];
+                    this.$.viewTabs.appendChild(_tab);
                 };
                 for (var i = 0; i < this.tabAttributes.length; i++) {
                     this.setTabAttribute(this.tabAttributes[i]);
                 };
                 this.lastselected = this.selected;
-            },
-            domReady: function(){
                 this.updateFragments();
             },
             updateFragments: function(){

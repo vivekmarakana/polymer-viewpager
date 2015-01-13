@@ -23,7 +23,8 @@
     "polymer": "Polymer/polymer#^0.5.2",
     "paper-tabs": "Polymer/paper-tabs#~0.5.2",
     "core-meta": "Polymer/core-meta#~0.5.2",
-    "core-transition": "Polymer/core-transition#~0.5.2"
+    "core-transition": "Polymer/core-transition#~0.5.2",
+    "core-resizable": "Polymer/core-resizable#~0.5.2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^2.0.5"
