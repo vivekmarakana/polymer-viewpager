@@ -88,7 +88,6 @@ To change selection bar color:
             swipeDisabled: false,
             thresholdVelocity: 1.0,
             created: function() {
-                this.tabs = [];
                 this.fragments = [];
                 this.width = 0;
                 this.dragging = false;
@@ -97,11 +96,8 @@ To change selection bar color:
             domReady: function(){
                 this.fragments = this.querySelectorAll('view-fragment');
                 for (var i = 0; i < this.fragments.length; i++) {
-                    this.tabs.push(this.fragments[i].name);
-                };
-                for (var i = 0; i < this.tabs.length; i++) {
                     var _tab = document.createElement('paper-tab');
-                    _tab.innerHTML = this.tabs[i];
+                    _tab.innerHTML = this.fragments[i].name;
                     this.$.viewTabs.appendChild(_tab);
                 };
                 for (var i = 0; i < this.tabAttributes.length; i++) {
