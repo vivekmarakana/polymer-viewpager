@@ -1,0 +1,7 @@
+{
+  "name": "polymer-viewpager#gh-pages",
+  "private": true,
+  "dependencies": {
+    "polymer-viewpager": "vivekmarakana/polymer-viewpager#master"
+  }
+}

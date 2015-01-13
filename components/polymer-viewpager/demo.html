@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <title>view-pager-test</title>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+        <style type="text/css">
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            view-fragment > .pager-content{
+                margin: 10px;
+                padding: 10px;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 1px 1px silver;
+            }
+
+            view-pager.pink paper-tabs{
+                background-color: #ED8CAD;
+                color:#FFFFFF;
+                border-bottom: 1px solid #ED8CAD;
+            }
+
+            view-pager.pink::shadow paper-tabs{
+                background-color: #ED8CAD;
+                color:#FFFFFF;
+                border-bottom: 1px solid #ED8CAD;
+            }
+
+            view-pager.pink #ink{
+                color: #ff4081;
+            }
+
+            view-pager.pink::shadow /deep/ #ink {
+                color: #ff4081;
+            }
+
+            view-pager.pink #selectionBar {
+                background-color: #ff4081;
+            }
+
+            view-pager.pink /deep/ #selectionBar {
+                background-color: #ff4081;
+            }
+        </style>
+
+        <script type="text/javascript" src="../webcomponentsjs/webcomponents.js"></script>
+        <link rel="import" href="view-pager.html">
+    </head>
+    <body unresolved>
+        <div id="cd-container" fit>
+            <view-pager swipeDisabled="false" class="pink" selected="1">
+                <view-fragment name="One">
+                    <div class="pager-content">
+                        <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula odio vel neque accumsan elementum. Morbi aliquam semper ligula, id egestas arcu fringilla ac. Sed sagittis, augue ac tempus aliquet, purus risus rhoncus arcu, vel feugiat magna sapien id turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc posuere at leo eu scelerisque. Suspendisse sit amet pellentesque ligula. Fusce sollicitudin quam metus, non malesuada nunc mattis quis.</b>
+
+                        <i>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas tempor tortor nunc, non condimentum tellus ultricies eu. Vivamus dictum sodales ultrices. Mauris tristique auctor dolor in ullamcorper. Quisque varius nulla ligula, at faucibus tortor suscipit sit amet. Mauris sollicitudin, mauris sit amet vulputate iaculis, enim ante pharetra mi, sed cursus eros dui ac diam. Mauris vel arcu dictum, dapibus ipsum et, efficitur nunc. Sed eget lacus facilisis, pellentesque tortor ut, vehicula nunc. Sed ullamcorper condimentum nibh, id vestibulum sapien eleifend iaculis. Aliquam et gravida felis, a elementum nunc. Quisque efficitur sodales mauris, vitae tristique lorem accumsan et. Sed sit amet lectus leo.</i>
+                    </div>
+                </view-fragment>
+                <view-fragment name="Two">
+                    <div class="pager-content">
+                        Aliquam auctor dui ut ex cursus, id eleifend sem egestas. Vivamus vel scelerisque lectus, at sagittis turpis. Morbi sit amet diam nec mi pharetra sollicitudin. Integer pharetra enim purus, ut laoreet nisl vestibulum a. Etiam pretium semper lacus, eu viverra ligula sagittis nec. Sed a tellus tempus sapien aliquet vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eget mi eget nunc volutpat porttitor ut vitae est. Ut enim turpis, ultricies ut arcu a, viverra posuere orci.
+
+                        Proin nec sem nec nulla feugiat vehicula. Sed id risus dapibus, auctor augue ac, ullamcorper ex. Nulla facilisi. Pellentesque urna erat, facilisis id lorem a, laoreet accumsan sapien. Sed ornare tempor fermentum. Sed urna lorem, pretium id orci id, laoreet consectetur nibh. Maecenas vitae venenatis est, quis faucibus eros. Curabitur pulvinar maximus velit, ac semper sem semper eu. Pellentesque in sagittis dolor, et vehicula quam. Proin non imperdiet felis.
+                    </div>
+                </view-fragment>
+                <view-fragment name="Three">
+                    <div class="pager-content">
+                        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas tempor tortor nunc, non condimentum tellus ultricies eu. Vivamus dictum sodales ultrices. Mauris tristique auctor dolor in ullamcorper. Quisque varius nulla ligula, at faucibus tortor suscipit sit amet. Mauris sollicitudin, mauris sit amet vulputate iaculis, enim ante pharetra mi, sed cursus eros dui ac diam. Mauris vel arcu dictum, dapibus ipsum et, efficitur nunc. Sed eget lacus facilisis, pellentesque tortor ut, vehicula nunc. Sed ullamcorper condimentum nibh, id vestibulum sapien eleifend iaculis. Aliquam et gravida felis, a elementum nunc. Quisque efficitur sodales mauris, vitae tristique lorem accumsan et. Sed sit amet lectus leo.
+                    </div>
+                </view-fragment>
+            </view-pager>
+        </div>
+    </body>
+</html>

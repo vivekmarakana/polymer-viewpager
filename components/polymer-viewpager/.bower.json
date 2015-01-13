@@ -1,0 +1,38 @@
+{
+  "name": "polymer-viewpager",
+  "authors": [
+    "Vivek Marakana <vivek.marakana@gmail.com>"
+  ],
+  "description": "ViewPager component for polymer just like Android ViewPager that also support swiping. Contains view-pager and view-fragment tags.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "view-pager",
+    "tab-layout",
+    "swipe-layout"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vivekmarakana/polymer-viewpager",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.2",
+    "paper-tabs": "Polymer/paper-tabs#~0.5.2",
+    "core-meta": "Polymer/core-meta#~0.5.2",
+    "core-transition": "Polymer/core-transition#~0.5.2",
+    "core-resizable": "Polymer/core-resizable#~0.5.2"
+  },
+  "_release": "a1330249b5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a1330249b50b3c90179cbf8220554ea3caa7b2ca"
+  },
+  "_source": "git://github.com/vivekmarakana/polymer-viewpager.git",
+  "_target": "master",
+  "_originalSource": "vivekmarakana/polymer-viewpager",
+  "_direct": true
+}
