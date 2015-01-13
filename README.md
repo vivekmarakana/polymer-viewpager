@@ -9,7 +9,9 @@ See the [demo page](http://vivekmarakana.github.io/polymer-viewpager/components/
 
 You can install this package using bower:
 
-```bower install polymer-viewpager
+```
+bower install polymer-viewpager
+```
 
 We've put together a [guide to view-pager](http://vivekmarakana.github.io/polymer-viewpager/) to help get you started.
 
