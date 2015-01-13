@@ -1,0 +1,74 @@
+<!--
+`view-fragment` is a single section for the pager and should be used in conjunction with `view-pager`.
+
+See <a href="#view-pager">view-pager</a> for more information about `view-pager`.
+
+Example:
+
+    <view-pager swipeDisabled="false" class="pink" selected="1" tabAttributes="['disableDrag','scrollable']">
+        <view-fragment name="One">
+            <div class="page-content">
+                Content for first fragment.
+            </div>
+        </view-fragment>
+        <view-fragment name="Two">
+            Content for second fragment.
+        </view-fragment>
+        <view-fragment name="Three">
+            Content for third fragment.
+        </view-fragment>
+    </view-pager>
+
+To apply styling on content inside fragments fragments:
+
+    view-fragment > .pager-content{
+        margin: 10px;
+        padding: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0 0 1px 1px silver;
+    }
+
+@group ViewPager
+@element view-fragment
+@homepage http://vivekmarakana.github.io/view-pager
+-->
+
+<link rel="import" href ="../core-meta/core-meta.html">
+<link rel="import" href ="view-transition.html">
+<polymer-element name="view-fragment" attributes="name" class="view-fragment" on-core-animation-finish="{{animationDone}}">
+    <style type="text/css">
+        .view-fragment{
+            display: block;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        Polymer('view-fragment', {
+            name: "Title",
+            animate: function(targetLeft, realTime){
+                var meta, transition;
+                if(!realTime){
+                    // Get the core-transition
+                    if(!meta){
+                        var meta = document.createElement('core-meta');
+                        meta.type = 'transition';
+                    }
+
+                    // Create and setup Transition
+                    transition = meta.byId('view-left-transition');
+                    transition.left = targetLeft;
+                    transition.setup(this);
+
+                    // Run the animation
+                    transition.go(this);
+                } else {
+                    this.style.transition = '';
+                    this.style.left = targetLeft+"px";
+                }
+            }
+        });
+    </script>
+</polymer-element>

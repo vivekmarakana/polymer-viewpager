@@ -1,0 +1,21 @@
+<link rel="import" href ="../core-transition/core-transition.html">
+<polymer-element name="view-transition" extends="core-transition">
+    <script>
+    Polymer('view-transition', {
+        setup: function(node) {
+            node.style.left = this.left+"px";
+        },
+        go: function(node) {
+            node.style.transition = 'left .3s ease-out';
+        },
+        teardown: function(node){
+            node.style.transition = '';
+        },
+        publish: {
+            left: 0
+        }
+    });
+    </script>
+</polymer-element>
+
+<view-transition id="view-left-transition"></view-transition>

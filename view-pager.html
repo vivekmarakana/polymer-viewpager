@@ -1,0 +1,186 @@
+<!--
+`view-pager` creats layout similar to ViewPager in Android using one/multiple 'view-fragments`.
+
+See <a href="#view-fragment">view-fragment</a> for more information about `view-fragment`.
+
+Example:
+
+    <view-pager swipeDisabled="false" class="pink" selected="1" tabAttributes="['disableDrag','scrollable']">
+        <view-fragment name="One">
+            Content for first fragment.
+        </view-fragment>
+        <view-fragment name="Two">
+            Content for second fragment.
+        </view-fragment>
+        <view-fragment name="Three">
+            Content for third fragment.
+        </view-fragment>
+    </view-pager>
+
+Styling Guide for changing look and feel of tabs for `view-page`:
+
+To change background, border and font color:
+
+    view-pager.pink::shadow paper-tabs{
+        background-color: #ED8CAD;
+        color:#FFFFFF;
+        border-bottom: 1px solid #ED8CAD;
+    }
+
+To change ripple color:
+
+    view-pager.pink::shadow /deep/ #ink {
+        color: #ff4081;
+    }
+
+To change selection bar color:
+
+    view-pager.pink /deep/ #selectionBar {
+        background-color: #ff4081;
+    }
+
+@group ViewPager
+@element view-pager
+@homepage http://vivekmarakana.github.io/view-pager
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-tabs/paper-tabs.html">
+<link rel="import" href="view-fragment.html">
+<polymer-element name="view-pager" attributes="swipeDisabled thresholdVelocity tabAttributes selected" fit>
+    <template>
+        <link rel="stylesheet" href="view-pager.css">
+        <paper-tabs id="viewTabs" selected="{{selected}}" on-core-activate="{{pageChange}}">
+            <template repeat="{{tabs}}">
+                <paper-tab class="uppercase">{{}}</paper-tab>
+            </template>
+        </paper-tabs>
+        <div id="viewPager" fit>
+            <content select="view-fragment"></content>
+        </div>
+    </template>
+    <script>
+        Polymer(Polymer.mixin({
+            /**
+             * If given, attributes given in array will be passed to `paper-tabs` within `view-pager`.
+             *
+             * @attribute tabAttributes
+             * @type Array<String>
+             * @default null
+             */
+            tabAttributes: [],
+
+            /**
+             * Sets the selected tab and view-fragment on load. Default is 0 to use the
+             * first tab.
+             *
+             * @attribute selected
+             * @type integer
+             * @default 0
+             */
+            selected: 0,
+
+            /**
+             * If set to true, swiping the fragments is disabled. Only way to change view
+             * is clicking the tabs.
+             *
+             * @attribute swipeDisabled
+             * @type boolean
+             * @default false
+             */
+            swipeDisabled: false,
+            thresholdVelocity: 1.0,
+            created: function() {
+                this.tabs = [];
+                this.fragments = [];
+                this.width = 0;
+                this.dragging = false;
+                this.deltaTime = 0;
+            },
+            ready: function() {
+                this.fragments = this.querySelectorAll('view-fragment');
+                for (var i = 0; i < this.fragments.length; i++) {
+                    this.tabs.push(this.fragments[i].name);
+                };
+                for (var i = 0; i < this.tabAttributes.length; i++) {
+                    this.setTabAttribute(this.tabAttributes[i]);
+                };
+                this.lastselected = this.selected;
+            },
+            domReady: function(){
+                this.updateFragments();
+            },
+            updateFragments: function(){
+                this.width = this.offsetWidth;
+                for (var i = 0; i < this.fragments.length; i++) {
+                    this.fragments[i].style.left = (this.width * (i-this.selected))+"px";
+                };
+            },
+            pageChange: function(e, v, elem){
+                if(!this.dragging){
+                    _targetOffset = (this.lastselected - this.selected) * this.width;
+                    this.animateFragments(_targetOffset, false);
+                    this.lastselected = this.selected;
+                }
+            },
+            animateFragments: function(offset, realTime){
+                _targetOffset = offset;
+                for (var i = 0; i < this.fragments.length; i++) {
+                    _targetLeft = parseFloat(this.fragments[i].style.left) + _targetOffset;
+                    this.fragments[i].animate(_targetLeft, realTime);
+                };
+            },
+            eventDelegates: {
+                trackstart: 'trackStart',
+                trackx: 'trackX',
+                trackend: 'trackEnd',
+                'core-resize': 'updateFragments'
+            },
+            trackStart: function(e) {
+                isEdge = ((e.ddx>0 && parseInt(this.fragments[0].style.left) >= 0) || (e.ddx<0 && parseInt(this.fragments[this.fragments.length - 1].style.left) <= 0)) ? true : false;
+                if (!this.swipeDisabled && !isEdge) {
+                    e.preventTap();
+                    e.cancelBubble = true;
+                    this.dragging = true;
+                    this.deltaTime = e.timeStamp;
+                }
+            },
+            trackX: function(e) {
+                if (this.dragging) {
+                    this.animateFragments(e.ddx, true);
+                }
+            },
+            trackEnd: function(e) {
+                if (this.dragging) {
+                    _final = 0;
+                    this.deltaTime = e.timeStamp - this.deltaTime;
+                    velocity = e.dx / this.deltaTime;
+                    if(Math.abs(velocity) > this.thresholdVelocity){
+                        i = this.selected;
+                        if(velocity < 0) i++;
+                        else i--;
+                        min = parseFloat(this.fragments[i].style.left);
+                        _final = i;
+                    } else {
+                        min = Math.abs(parseFloat(this.fragments[this.fragments.length - 1].style.left));
+                        for (var i = 0; i < this.fragments.length; i++) {
+                            if(Math.abs(parseFloat(this.fragments[i].style.left)) <= Math.abs(min)){
+                                min = parseFloat(this.fragments[i].style.left);
+                                _final = i;
+                            }
+                        }
+                    }
+                    this.selected = _final;
+                    this.lastselected = _final;
+                    this.$.viewTabs.updateBar();
+                    this.animateFragments(0-min, false);
+                    this.dragging = false;
+                }
+            },
+            setTabAttribute: function(attr, value){
+                if(typeof(value) === "undefined") value='';
+                this.$.viewTabs.setAttribute(attr, value);
+            }
+        }, Polymer.CoreResizable));
+    </script>
+</polymer-element>

@@ -1,0 +1,31 @@
+{
+  "name": "view-pager",
+  "version": "0.2.7",
+  "authors": [
+    "Vivek Marakana <vivek.marakana@gmail.com>"
+  ],
+  "description": "Element providing solution to no problem in particular.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "view-pager",
+    "sliding-tabs"
+  ],
+  "main": "view-pager.html",
+  "license": "MIT",
+  "homepage": "https://github.com/<USERNAME>/view-pager/",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.2",
+    "paper-tabs": "Polymer/paper-tabs#~0.5.2",
+    "core-meta": "Polymer/core-meta#~0.5.2",
+    "core-transition": "Polymer/core-transition#~0.5.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
+  }
+}

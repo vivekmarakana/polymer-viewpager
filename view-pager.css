@@ -1,0 +1,32 @@
+:host{
+    display: block;
+    overflow: hidden;
+}
+
+paper-tabs{
+    background-color: #3498db;
+    color: #FFFFFF;
+    font-weight: normal;
+    border-bottom: 1px solid #3498db;
+    /*position: fixed;*/
+    right: 0;
+    left: 0;
+}
+
+paper-tabs::shadow #selectionBar {
+    background-color: #FFFFFF;
+}
+
+paper-tabs paper-tab::shadow #ink {
+    color: #53A9E2;
+}
+
+#viewPager{
+    position: relative;
+    /*top: 50px;*/
+    z-index: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
